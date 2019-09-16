@@ -1,21 +1,21 @@
 <template>
   <v-app>
     <v-app-bar app>
-      <v-toolbar-title class="headline text-uppercase">
-        <span>Vuetify</span>
-        <span class="font-weight-light">MATERIAL DESIGN</span>
-      </v-toolbar-title>
-      <v-spacer></v-spacer>
-      <v-btn
-        text
-        href="https://github.com/vuetifyjs/vuetify/releases/latest"
-        target="_blank"
-      >
-        <span class="mr-2">Latest Release</span>
-      </v-btn>
+    <v-container>
+      <v-row>
+
+          <h3>Parc Jurassique</h3>
+
+          <v-avatar><img :src="require('./assets/money.png')" alt=""></v-avatar><span><h3>{{banque}}</h3></span>
+          <v-avatar><img :src="require('./assets/family.png')" alt=""></v-avatar><span><h3>{{visiteurs}}</h3></span>
+          <v-avatar><img :src="require('./assets/danger.png')" alt=""></v-avatar><span><h3>{{danger}}</h3></span>
+
+      </v-row>
+    </v-container>
     </v-app-bar>
 
     <v-content>
+
       <v-container>
         <v-row no-gutters>
             <v-col
@@ -56,11 +56,13 @@
             </v-col>
             </v-row>
       </v-container>
+
     </v-content>
   </v-app>
 </template>
 
 <script>
+
 import Grid from './components/Grid'
 import DinoCard from './components/DinoCard'
 import CardSecu from './components/CardSecu'
@@ -68,12 +70,25 @@ import CardSecu from './components/CardSecu'
 export default {
   name: 'App',
   components: {
+
     Grid,
     DinoCard,
     CardSecu
+
   },
   data: () => ({
-    //
-  })
+  }),
+  computed: {
+    banque: function () {
+      return this.$store.state._banque
+    },
+    visiteurs: function () {
+      return this.$store.state._visiteurs
+    },
+    danger: function () {
+      return this.$store.state._danger
+    }
+
+  }
 }
 </script>
