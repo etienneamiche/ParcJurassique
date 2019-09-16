@@ -16,21 +16,24 @@
     </v-app-bar>
 
     <v-content>
-      <HelloWorld/>
+      <Grid/>
+      <DinoCard/>
     </v-content>
   </v-app>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld';
+import Grid from './components/Grid'
+import DinoCard from './components/DinoCard'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld,
+    Grid,
+    DinoCard
   },
   data: () => ({
     //
-  }),
-};
+  })
+}
 </script>
