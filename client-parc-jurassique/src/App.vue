@@ -16,18 +16,26 @@
     </v-app-bar>
 
     <v-content>
-      <Test/>
+
+      <Grid/>
+      <DinoCard/>
     </v-content>
   </v-app>
 </template>
 
 <script>
-import Test from './components/Test'
+
+import Grid from './components/Grid'
+import DinoCard from './components/DinoCard'
+
 
 export default {
   name: 'App',
   components: {
-    Test
+
+    Grid,
+    DinoCard
+
   },
   data: () => ({
     //
