@@ -16,8 +16,46 @@
     </v-app-bar>
 
     <v-content>
-      <Grid/>
-      <DinoCard/>
+      <v-container>
+        <v-row no-gutters>
+            <v-col
+            cols="12"
+            sm="4">
+
+            <v-card
+            outlined
+            tile>
+            <DinoCard/>
+
+            </v-card>
+
+            </v-col>
+            <v-col
+            cols="12"
+            sm="4">
+
+            <v-card
+            outlined
+            tile>
+            two
+
+            </v-card>
+
+            </v-col>
+            <v-col
+            cols="12"
+            sm="4">
+
+            <v-card
+            outlined
+            tile>
+            <CardSecu/>
+
+            </v-card>
+
+            </v-col>
+            </v-row>
+      </v-container>
     </v-content>
   </v-app>
 </template>
@@ -25,12 +63,14 @@
 <script>
 import Grid from './components/Grid'
 import DinoCard from './components/DinoCard'
+import CardSecu from './components/CardSecu'
 
 export default {
   name: 'App',
   components: {
     Grid,
-    DinoCard
+    DinoCard,
+    CardSecu
   },
   data: () => ({
     //
