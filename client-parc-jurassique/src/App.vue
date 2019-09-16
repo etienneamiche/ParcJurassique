@@ -63,7 +63,6 @@
 
 <script>
 
-import Grid from './components/Grid'
 import DinoCard from './components/DinoCard'
 import CardSecu from './components/CardSecu'
 
@@ -71,7 +70,6 @@ export default {
   name: 'App',
   components: {
 
-    Grid,
     DinoCard,
     CardSecu
 

@@ -7,7 +7,8 @@ const state = {
   _banque: 1000,
   _visiteurs: 10,
   _danger: 10,
-  _dinausaures: 0
+  _dinausaures: 0,
+  _effectifMilitaire: 0
 }
 
 export default new Vuex.Store({
@@ -47,6 +48,12 @@ export default new Vuex.Store({
     },
     decrementDinoraures (state, n) {
       state._dinoraures -= n
+    },
+
+    // Militaire Mutation
+
+    incrementMilitaire (state) {
+      state._effectifMilitaire += 1
     }
 
   },
@@ -74,6 +81,9 @@ export default new Vuex.Store({
     },
     decrementDinosaure ({ commit }, n) {
       commit('decrementDinosaure', n)
+    },
+    incrementMilitaire ({ commit }) {
+      commit('incrementMilitaire')
     }
   }
 
