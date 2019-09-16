@@ -16,6 +16,7 @@
     </v-app-bar>
 
     <v-content>
+
       <Grid/>
       <DinoCard/>
     </v-content>
@@ -23,14 +24,18 @@
 </template>
 
 <script>
+
 import Grid from './components/Grid'
 import DinoCard from './components/DinoCard'
+
 
 export default {
   name: 'App',
   components: {
+
     Grid,
     DinoCard
+
   },
   data: () => ({
     //
