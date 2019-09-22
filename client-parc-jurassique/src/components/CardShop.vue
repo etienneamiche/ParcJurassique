@@ -2,22 +2,22 @@
   <v-card
     max-width="344"
     class="mx-auto"
-    color="red lighten-4"
+    color="blue lighten-4"
   >
-    <v-card-title>Dinosaure</v-card-title>
+    <v-card-title>Magasin</v-card-title>
     <v-card-actions>
-      <v-btn class="mx-2" fab dark large color="red" @click="acheterDino" >
+      <v-btn class="mx-2" fab dark large color="blue" @click="acheterMagasin" >
         <v-avatar>
-            <img :src="require('../assets/brachiosaure.png')">
+            <img :src="require('../assets/restaurant.png')">
         </v-avatar>
     </v-btn>
-    <v-container class="red lighten-3">
+    <v-container class="blue lighten-3">
     <v-row no-gutters>
       <v-col cols="12">
         <h4>Cout: 40$</h4>
       </v-col>
       <v-col cols="12">
-        <h4>Danger: +10</h4>
+        <h4>Visiteurs: +35</h4>
       </v-col>
       <v-col cols="12">
         <h4>Effectif : {{effectif}}</h4>
@@ -32,23 +32,23 @@
 export default {
   computed: {
     effectif: function () {
-      return this.$store.state._dinosaures
+      return this.$store.state._magasins
     }
   },
   methods: {
-    incrementDanger: function (n) {
-      this.$store.dispatch('incrementDanger', n)
+    incrementVisiteurs: function (n) {
+      this.$store.dispatch('incrementVisiteurs', n)
     },
     decrementBanque: function (n) {
       this.$store.dispatch('decrementBanque', n)
     },
-    incrementDinosaures: function () {
-      this.$store.dispatch('incrementDinosaures')
+    incrementMagasins: function () {
+      this.$store.dispatch('incrementMagasins')
     },
-    acheterDino: function () {
-      this.incrementDanger(10)
-      this.decrementBanque(40)
-      this.incrementDinosaures()
+    acheterMagasin: function () {
+      this.incrementVisiteurs(35)
+      this.decrementBanque(10)
+      this.incrementMagasins()
     }
   }
 }
