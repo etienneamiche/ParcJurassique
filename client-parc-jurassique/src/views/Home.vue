@@ -24,9 +24,17 @@
             </v-card>
           </v-col>
 
-          <v-col cols="12" sm="4">
-            <v-card  >
-              Magasin
+
+            </v-col>
+            <v-col
+            cols="12"
+            sm="4">
+
+            <v-card
+            outlined
+            tile>
+            <CardShop/>
+
             </v-card>
           </v-col>
 
@@ -43,15 +51,18 @@
 </template>
 
 <script>
-import DinoCard from '@/components/DinoCard'
-import CardSecu from '@/components/CardSecu'
-import gameData from '@/data/game_data'
+
+import DinoCard from '../components/DinoCard'
+import CardSecu from '../components/CardSecu'
+import CardShop from '../components/CardShop'
+
 
 export default {
   name: 'home',
   components: {
     DinoCard,
-    CardSecu
+    CardSecu,
+    CardShop
   },
   data: () => ({ gamedata: gameData }),
 

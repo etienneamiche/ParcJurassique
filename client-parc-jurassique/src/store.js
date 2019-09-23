@@ -7,8 +7,9 @@ const state = {
   _banque: 1000,
   _visiteurs: 10,
   _danger: 10,
-  _dinausaures: 0,
-  _effectifMilitaire: 0
+  _dinosaures: 0,
+  _effectifMilitaire: 0,
+  _magasins: 0
 }
 
 export default new Vuex.Store({
@@ -41,19 +42,30 @@ export default new Vuex.Store({
       state._danger -= n
     },
 
-    // Visiteurs Mutation
+    // Dinosaures Mutation
 
-    incrementDinoraures (state, n) {
-      state._dinoraures += n
+    incrementDinosaures (state) {
+      state._dinosaures += 1
     },
-    decrementDinoraures (state, n) {
-      state._dinoraures -= n
+    decrementDinosaures (state) {
+      state._dinosaures -= 1
     },
 
     // Militaire Mutation
 
     incrementMilitaire (state) {
       state._effectifMilitaire += 1
+    },
+    decrementMilitaire (state) {
+      state._effectifMilitaire -= 1
+    },
+    // Magasin Mutation
+
+    incrementMagasins (state) {
+      state._magasins += 1
+    },
+    decrementMagasin (state) {
+      state._magasins -= 1
     }
 
   },
@@ -76,14 +88,23 @@ export default new Vuex.Store({
     decrementDanger ({ commit }, n) {
       commit('decrementDanger', n)
     },
-    incrementDinosaure ({ commit }, n) {
-      commit('incrementDinosaure', n)
+    incrementDinosaures ({ commit }) {
+      commit('incrementDinosaures')
     },
-    decrementDinosaure ({ commit }, n) {
-      commit('decrementDinosaure', n)
+    decrementDinosaure ({ commit }) {
+      commit('decrementDinosaures')
     },
     incrementMilitaire ({ commit }) {
       commit('incrementMilitaire')
+    },
+    decrementMilitaire ({ commit }) {
+      commit('decrementMilitaire')
+    },
+    incrementMagasins ({ commit }) {
+      commit('incrementMagasins')
+    },
+    decrementMagasins ({ commit }) {
+      commit('decrementMagasins')
     }
   }
 
