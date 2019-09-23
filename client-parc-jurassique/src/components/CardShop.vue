@@ -1,8 +1,8 @@
 <template>
   <v-card
-    max-width="344"
     class="mx-auto"
     color="blue lighten-4"
+    elevation="10"
   >
     <v-card-title>Magasin</v-card-title>
     <v-card-actions>

@@ -18,31 +18,29 @@
 
       <v-container>
         <v-row>
+          <!-- Dinosaures -->
           <v-col cols="12" sm="4">
             <v-card >
-              <DinoCard/>
+              <CardDino v-for="(dinosaure,i) in gamedata.dinosaures"
+                        :dinosaure="dinosaure"
+                        :key="i"/>
             </v-card>
           </v-col>
 
-
-            </v-col>
-            <v-col
-            cols="12"
-            sm="4">
-
-            <v-card
-            outlined
-            tile>
-            <CardShop/>
-
+          <!-- Magasins -->
+          <v-col cols="12" sm="4">
+            <v-card>
+              <CardShop/>
             </v-card>
           </v-col>
 
+          <!-- Sécurité -->
           <v-col cols="12" sm="4">
             <v-card >
               <CardSecu/>
             </v-card>
           </v-col>
+
         </v-row>
       </v-container>
 
@@ -52,15 +50,15 @@
 
 <script>
 
-import DinoCard from '../components/DinoCard'
-import CardSecu from '../components/CardSecu'
-import CardShop from '../components/CardShop'
-
+import CardDino from '@/components/CardDino'
+import CardSecu from '@/components/CardSecu'
+import CardShop from '@/components/CardShop'
+import gameData from '@/data/game_data'
 
 export default {
   name: 'home',
   components: {
-    DinoCard,
+    CardDino,
     CardSecu,
     CardShop
   },
