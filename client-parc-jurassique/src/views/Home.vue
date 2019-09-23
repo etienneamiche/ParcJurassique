@@ -37,7 +37,7 @@
             <v-card
             outlined
             tile>
-            two
+            <CardShop/>
 
             </v-card>
 
@@ -64,12 +64,14 @@
 <script>
 import DinoCard from '../components/DinoCard'
 import CardSecu from '../components/CardSecu'
+import CardShop from '../components/CardShop'
 
 export default {
   name: 'home',
   components: {
     DinoCard,
-    CardSecu
+    CardSecu,
+    CardShop
   },
   data: () => ({ }),
 
