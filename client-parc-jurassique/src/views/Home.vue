@@ -1,5 +1,5 @@
 <template>
-<v-app>
+<v-app dark>
     <v-app-bar app>
     <v-container>
       <v-row>
@@ -17,44 +17,25 @@
     <v-content>
 
       <v-container>
-        <v-row no-gutters>
-            <v-col
-            cols="12"
-            sm="4">
-
-            <v-card
-            outlined
-            tile>
-            <DinoCard/>
-
+        <v-row>
+          <v-col cols="12" sm="4">
+            <v-card >
+              <DinoCard/>
             </v-card>
+          </v-col>
 
-            </v-col>
-            <v-col
-            cols="12"
-            sm="4">
-
-            <v-card
-            outlined
-            tile>
-            two
-
+          <v-col cols="12" sm="4">
+            <v-card  >
+              Magasin
             </v-card>
+          </v-col>
 
-            </v-col>
-            <v-col
-            cols="12"
-            sm="4">
-
-            <v-card
-            outlined
-            tile>
-            <CardSecu/>
-
+          <v-col cols="12" sm="4">
+            <v-card >
+              <CardSecu/>
             </v-card>
-
-            </v-col>
-            </v-row>
+          </v-col>
+        </v-row>
       </v-container>
 
     </v-content>
@@ -62,8 +43,9 @@
 </template>
 
 <script>
-import DinoCard from '../components/DinoCard'
-import CardSecu from '../components/CardSecu'
+import DinoCard from '@/components/DinoCard'
+import CardSecu from '@/components/CardSecu'
+import gameData from '@/data/game_data'
 
 export default {
   name: 'home',
@@ -71,7 +53,7 @@ export default {
     DinoCard,
     CardSecu
   },
-  data: () => ({ }),
+  data: () => ({ gamedata: gameData }),
 
   computed: {
     banque: function () {
