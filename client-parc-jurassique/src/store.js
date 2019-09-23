@@ -7,9 +7,27 @@ const state = {
   _banque: 1000,
   _visiteurs: 10,
   _danger: 10,
-  _dinosaures: 0,
-  _effectifMilitaire: 0,
-  _magasins: 0
+
+  _effectifSecurité: {
+    'Gardien': 0,
+    'Veterinaire': 0,
+    'Soldat': 0,
+    'Hélicoptère': 0
+  },
+  _effectifMagasins: {
+    'Boutique de souvenirs': 0,
+    'Restaurant': 0,
+    'Photographe': 0,
+    'Nurserie': 0
+  },
+  _effectifDinosaures: {
+    'total': 0,
+    'Styracosaure': 0,
+    'Brachiosaure': 0,
+    'Pterosaure': 0,
+    'Velociraptor': 0,
+    'Tyranosaure': 0
+  }
 }
 
 export default new Vuex.Store({
@@ -44,28 +62,21 @@ export default new Vuex.Store({
 
     // Dinosaures Mutation
 
-    incrementDinosaures (state) {
-      state._dinosaures += 1
-    },
-    decrementDinosaures (state) {
-      state._dinosaures -= 1
+    incrementDinosaures (state, name) {
+      state._effectifDinosaures[name] += 1
+      state._effectifDinosaures['total'] += 1
     },
 
     // Militaire Mutation
 
-    incrementMilitaire (state) {
-      state._effectifMilitaire += 1
+    incrementSecurite (state, name) {
+      state._effectifSecurité[name] += 1
     },
-    decrementMilitaire (state) {
-      state._effectifMilitaire -= 1
-    },
+
     // Magasin Mutation
 
-    incrementMagasins (state) {
-      state._magasins += 1
-    },
-    decrementMagasin (state) {
-      state._magasins -= 1
+    incrementMagasins (state, name) {
+      state._effectifMagasins[name] += 1
     }
 
   },
@@ -88,23 +99,14 @@ export default new Vuex.Store({
     decrementDanger ({ commit }, n) {
       commit('decrementDanger', n)
     },
-    incrementDinosaures ({ commit }) {
-      commit('incrementDinosaures')
+    incrementDinosaures ({ commit }, name) {
+      commit('incrementDinosaures', name)
     },
-    decrementDinosaure ({ commit }) {
-      commit('decrementDinosaures')
+    incrementSecurite ({ commit }, name) {
+      commit('incrementMilitaire', name)
     },
-    incrementMilitaire ({ commit }) {
-      commit('incrementMilitaire')
-    },
-    decrementMilitaire ({ commit }) {
-      commit('decrementMilitaire')
-    },
-    incrementMagasins ({ commit }) {
-      commit('incrementMagasins')
-    },
-    decrementMagasins ({ commit }) {
-      commit('decrementMagasins')
+    incrementMagasins ({ commit }, name) {
+      commit('incrementMagasins', name)
     }
   }
 
