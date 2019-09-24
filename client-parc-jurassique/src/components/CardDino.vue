@@ -8,7 +8,7 @@
     <v-card-actions>
       <v-btn class="mx-2" fab dark large color="red" @click="acheterDino" >
         <v-avatar>
-            <img :src="dinosaure.logo">
+            <img :src="require(`@/assets/${dinosaure.logo}`)">
 
         </v-avatar>
     </v-btn>
