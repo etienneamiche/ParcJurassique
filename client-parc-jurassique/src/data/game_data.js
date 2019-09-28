@@ -62,7 +62,7 @@ const gameData = {
     'benefice': 4,
     'logo': 'eggs.png'
   }],
-  'personnel': [{
+  'personnels': [{
     'name': 'Gardien',
     'decription': 'petit gardien pas très efficace',
     'prix': 10,

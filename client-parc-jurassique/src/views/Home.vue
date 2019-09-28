@@ -22,22 +22,26 @@
           <v-col cols="12" sm="4">
             <v-card >
               <CardDino v-for="(dinosaure,i) in gamedata.dinosaures"
-                        :dinosaure="dinosaure"
-                        :key="i"/>
+                :dinosaure="dinosaure"
+                :key="i"/>
             </v-card>
           </v-col>
 
           <!-- Magasins -->
           <v-col cols="12" sm="4">
             <v-card>
-              <CardShop/>
+              <CardShop v-for="(magasin,i) in gamedata.magasins"
+              :magasin="magasin"
+              :key="i"/>
             </v-card>
           </v-col>
 
           <!-- Sécurité -->
           <v-col cols="12" sm="4">
             <v-card >
-              <CardSecu/>
+              <CardSecu v-for="(personnel,i) in gamedata.personnels"
+              :personnel="personnel"
+              :key="i"/>
             </v-card>
           </v-col>
 

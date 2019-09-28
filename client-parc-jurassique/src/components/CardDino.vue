@@ -54,10 +54,14 @@ export default {
     },
 
     acheterDino: function () {
-      this.incrementDanger(this.dinosaure.danger)
-      this.decrementBanque(this.dinosaure.prix)
-      this.incrementViviteurs(this.dinosaure.visiteur)
-      this.incrementDinosaures(this.dinosaure.name)
+      if (this.dinosaure.prix <= this.$store.state._banque) {
+        this.incrementDanger(this.dinosaure.danger)
+        this.decrementBanque(this.dinosaure.prix)
+        this.incrementViviteurs(this.dinosaure.visiteur)
+        this.incrementDinosaures(this.dinosaure.name)
+      } else {
+        alert('vous êtes trop pauvre')
+      }
     }
   }
 }
