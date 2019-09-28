@@ -48,7 +48,7 @@ const gameData = {
     'decription': '',
     'prix': 100,
     'benefice': 2,
-    'logo': 'giftshop.png'
+    'logo': 'restaurant.png'
   }, {
     'name': 'Photographe',
     'decription': '',
@@ -72,19 +72,19 @@ const gameData = {
     'name': 'Veterinaire',
     'decription': '',
     'prix': 100,
-    'danger': -5,
+    'danger': -2,
     'logo': 'veterinarian.png'
   }, {
     'name': 'Soldat',
     'decription': '',
     'prix': 1000,
-    'danger': -20,
+    'danger': -3,
     'logo': 'army.png'
   }, {
     'name': 'Hélicoptère',
     'decription': '',
     'prix': 10000,
-    'danger': -50,
+    'danger': -4,
     'logo': 'helicopter.png'
   }]
 }

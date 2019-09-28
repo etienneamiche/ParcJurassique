@@ -17,7 +17,7 @@
         <h4>Coût : {{magasin.prix}}$</h4>
       </v-col>
       <v-col cols="12">
-        <h4>Visiteurs: + {{magasin.benefice}}</h4>
+        <h4>Bénéfices: + {{magasin.benefice}}$ par visiteur</h4>
       </v-col>
       <v-col cols="12">
         <h4>Effectif : {{effectif}}</h4>
@@ -33,7 +33,7 @@ export default {
   props: ['magasin'],
   computed: {
     effectif: function () {
-      return this.$store.state._effectifMagasins['Restaurant']
+      return this.$store.state._effectifMagasins[this.magasin.name]
     }
   },
   methods: {
@@ -49,7 +49,6 @@ export default {
 
     acheterMagasin: function () {
       if (this.magasin.prix <= this.$store.state._banque) {
-        this.incrementVisiteurs(this.magasin.benefice)
         this.decrementBanque(this.magasin.prix)
         this.incrementMagasins(this.magasin.name)
       } else {
@@ -59,3 +58,8 @@ export default {
   }
 }
 </script>
+<style scoped>
+.v-card{
+  margin-top:1em
+}
+</style>

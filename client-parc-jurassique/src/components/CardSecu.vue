@@ -11,7 +11,7 @@
             <img :src="require(`@/assets/${personnel.logo}`)">
         </v-avatar>
     </v-btn>
-    <v-container class="green lighten-3">
+    <v-container>
     <v-row no-gutters>
       <v-col cols="12">
         <h4>Cout: {{personnel.prix}}$</h4>
@@ -58,3 +58,8 @@ export default {
   }
 }
 </script>
+<style scoped>
+.v-card{
+  margin-top:1em
+}
+</style>

@@ -18,10 +18,13 @@
         <h4>Cout: {{dinosaure.prix}}$</h4>
       </v-col>
       <v-col cols="12">
+        <h4>Visiteur: +{{dinosaure.visiteur}}</h4>
+      </v-col>
+      <v-col cols="12">
         <h4>Danger: +{{dinosaure.danger}}</h4>
       </v-col>
       <v-col cols="12">
-        <h4>Effectif : {{effectif}}</h4>
+        <h4>Effectif: {{effectif}}</h4>
       </v-col>
     </v-row>
   </v-container>
@@ -54,15 +57,17 @@ export default {
     },
 
     acheterDino: function () {
-      if (this.dinosaure.prix <= this.$store.state._banque) {
-        this.incrementDanger(this.dinosaure.danger)
-        this.decrementBanque(this.dinosaure.prix)
-        this.incrementViviteurs(this.dinosaure.visiteur)
-        this.incrementDinosaures(this.dinosaure.name)
-      } else {
-        alert('vous êtes trop pauvre')
-      }
+      this.incrementDanger(this.dinosaure.danger)
+      this.decrementBanque(this.dinosaure.prix)
+      this.incrementViviteurs(this.dinosaure.visiteur)
+      this.incrementDinosaures(this.dinosaure.name)
     }
   }
 }
 </script>
+
+<style scoped>
+.v-card {
+  margin-top: 1em;
+}
+</style>
