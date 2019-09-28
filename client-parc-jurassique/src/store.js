@@ -8,7 +8,7 @@ const state = {
   _visiteurs: 10,
   _danger: 10,
 
-  _effectifSecurité: {
+  _effectifPersonnels: {
     'Gardien': 0,
     'Veterinaire': 0,
     'Soldat': 0,
@@ -56,6 +56,9 @@ export default new Vuex.Store({
     incrementDanger (state, n) {
       state._danger += n
     },
+    // incrementDanger (n) {
+    //   state._danger += n
+    // },
     decrementDanger (state, n) {
       state._danger -= n
     },
