@@ -1,30 +1,28 @@
 <template>
-  <v-card
-    class="mx-auto"
-    color="red lighten-4"
-    elevation="10"
-  >
+  <v-card class="mx-auto" color="red lighten-4" elevation="10">
     <v-card-title>{{dinosaure.name}}</v-card-title>
     <v-card-actions>
-      <v-btn class="mx-2" fab dark large color="red" @click="acheterDino" >
+      <v-btn class="mx-2" fab dark large color="red" @click="acheterDino">
         <v-avatar>
-            <img :src="require(`@/assets/${dinosaure.logo}`)">
-
+          <img :src="require(`@/assets/${dinosaure.logo}`)" />
         </v-avatar>
-    </v-btn>
-    <v-container class="red lighten-3">
-    <v-row no-gutters>
-      <v-col cols="12">
-        <h4>Cout: {{dinosaure.prix}}$</h4>
-      </v-col>
-      <v-col cols="12">
-        <h4>Danger: +{{dinosaure.danger}}</h4>
-      </v-col>
-      <v-col cols="12">
-        <h4>Effectif : {{effectif}}</h4>
-      </v-col>
-    </v-row>
-  </v-container>
+      </v-btn>
+      <v-container class="red lighten-3">
+        <v-row no-gutters>
+          <v-col cols="12">
+            <h4>Cout: {{dinosaure.prix}}$</h4>
+          </v-col>
+          <v-col cols="12">
+            <h4>Visiteur: +{{dinosaure.visiteur}}</h4>
+          </v-col>
+          <v-col cols="12">
+            <h4>Danger: +{{dinosaure.danger}}</h4>
+          </v-col>
+          <v-col cols="12">
+            <h4>Effectif: {{effectif}}</h4>
+          </v-col>
+        </v-row>
+      </v-container>
     </v-card-actions>
   </v-card>
 </template>
@@ -36,10 +34,8 @@ export default {
     effectif: function () {
       return this.$store.state._effectifDinosaures[this.dinosaure.name]
     }
-
   },
   methods: {
-
     incrementDanger: function (n) {
       this.$store.dispatch('incrementDanger', n)
     },
@@ -66,3 +62,9 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+.v-card {
+  margin-top: 1em;
+}
+</style>
