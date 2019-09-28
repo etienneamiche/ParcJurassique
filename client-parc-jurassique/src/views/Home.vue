@@ -66,8 +66,28 @@ export default {
     CardSecu,
     CardShop
   },
-  data: () => ({ gamedata: gameData }),
+  data: () => ({
+    gamedata: gameData
+  }),
 
+  mounted () {
+    this.earnMoney()
+  },
+
+  methods: {
+    earnMoney: function () {
+      setInterval(() => {
+        let moneyCount = 0
+        // calcul du benefice de tout les magasins
+        for (let storeShop in this.$store.state._effectifMagasins) {
+          let benef = this.gamedata.magasins.find(m => m.name === storeShop).benefice
+          moneyCount += this.$store.state._effectifMagasins[storeShop] * benef
+        }
+        // ajout du benefice calculé a la banque
+        this.$store.dispatch('incrementBanque', moneyCount * this.$store.state._visiteurs)
+      }, 1000)
+    }
+  },
   computed: {
     banque: function () {
       return this.$store.state._banque
@@ -78,7 +98,6 @@ export default {
     danger: function () {
       return this.$store.state._danger
     }
-
   }
 }
 </script>
