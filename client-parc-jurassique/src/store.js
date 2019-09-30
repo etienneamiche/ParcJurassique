@@ -73,7 +73,7 @@ export default new Vuex.Store({
     // Militaire Mutation
 
     incrementSecurite (state, name) {
-      state._effectifSecurité[name] += 1
+      state._effectifPersonnels[name] += 1
     },
 
     // Magasin Mutation
@@ -106,7 +106,7 @@ export default new Vuex.Store({
       commit('incrementDinosaures', name)
     },
     incrementSecurite ({ commit }, name) {
-      commit('incrementMilitaire', name)
+      commit('incrementSecurite', name)
     },
     incrementMagasins ({ commit }, name) {
       commit('incrementMagasins', name)
