@@ -14,7 +14,7 @@
     <v-container>
     <v-row no-gutters>
       <v-col cols="12">
-        <h4>Cout: {{personnel.prix_courant}}$</h4>
+        <h4>Cout: {{this.prixCourant}}$</h4>
       </v-col>
       <v-col cols="12">
         <h4>Danger: {{personnel.danger}}</h4>
@@ -34,6 +34,12 @@ export default {
   computed: {
     effectif: function () {
       return this.$store.state._effectifPersonnels[this.personnel.name]
+    },
+    prixCourant: function () {
+      if (this.effectif === 0) {
+        return this.personnel.prix
+      }
+      return this.effectif * this.personnel.prix
     }
   },
   methods: {
@@ -47,12 +53,10 @@ export default {
       this.$store.dispatch('incrementMilitaire')
     },
     acheterSecu: function () {
-      if (this.personnel.prix_courant <= this.$store.state._banque) {
+      if (this.prixCourant <= this.$store.state._banque) {
         this.decrementDanger(this.personnel.danger)
-        this.decrementBanque(this.personnel.prix_courant)
+        this.decrementBanque(this.prixCourant)
         this.incrementSecurite(this.personnel.name)
-
-        this.personnel.prix_courant += this.personnel.prix_original * 0.1
       } else {
         alert('vous êtes trop pauvre')
       }

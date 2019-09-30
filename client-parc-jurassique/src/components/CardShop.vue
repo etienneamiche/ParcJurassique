@@ -14,7 +14,7 @@
     <v-container class="blue lighten-3">
     <v-row no-gutters>
       <v-col cols="12">
-        <h4>Coût : {{magasin.prix_courant}}$</h4>
+        <h4>Coût : {{this.prixCourant}}$</h4>
       </v-col>
       <v-col cols="12">
         <h4>Bénéfices: + {{magasin.benefice}}$ par visiteur</h4>
@@ -34,6 +34,12 @@ export default {
   computed: {
     effectif: function () {
       return this.$store.state._effectifMagasins[this.magasin.name]
+    },
+    prixCourant: function () {
+      if (this.effectif === 0) {
+        return this.magasin.prix
+      }
+      return this.effectif * this.magasin.prix
     }
   },
   methods: {
@@ -48,11 +54,9 @@ export default {
     },
 
     acheterMagasin: function () {
-      if (this.magasin.prix_courant <= this.$store.state._banque) {
-        this.decrementBanque(this.magasin.prix_courant)
+      if (this.prixCourant <= this.$store.state._banque) {
+        this.decrementBanque(this.prixCourant)
         this.incrementMagasins(this.magasin.name)
-
-        this.magasin.prix_courant += this.magasin.prix_original * 0.1
       } else {
         alert('vous êtes trop pauvre')
       }
