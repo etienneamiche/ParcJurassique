@@ -14,7 +14,7 @@
     <v-container>
     <v-row no-gutters>
       <v-col cols="12">
-        <h4>Cout: {{this.prixCourant}}$</h4>
+        <h4>Cout: {{prixCourant}}$</h4>
       </v-col>
       <v-col cols="12">
         <h4>Danger: {{personnel.danger}}</h4>
@@ -50,7 +50,7 @@ export default {
       this.$store.dispatch('decrementBanque', n)
     },
     incrementSecurite: function () {
-      this.$store.dispatch('incrementMilitaire')
+      this.$store.dispatch('incrementSecurite', this.personnel.name)
     },
     acheterSecu: function () {
       if (this.prixCourant <= this.$store.state._banque) {

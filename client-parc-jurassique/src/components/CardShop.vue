@@ -14,7 +14,7 @@
     <v-container class="blue lighten-3">
     <v-row no-gutters>
       <v-col cols="12">
-        <h4>Coût : {{this.prixCourant}}$</h4>
+        <h4>Coût : {{prixCourant}}$</h4>
       </v-col>
       <v-col cols="12">
         <h4>Bénéfices: + {{magasin.benefice}}$ par visiteur</h4>
