@@ -10,7 +10,7 @@
       <v-container class="red lighten-3">
         <v-row no-gutters>
           <v-col cols="12">
-            <h4>Cout: {{dinosaure.prix}}$</h4>
+            <h4>Cout: {{dinosaure.prix_courant}}$</h4>
           </v-col>
           <v-col cols="12">
             <h4>Visiteur: +{{dinosaure.visiteur}}</h4>
@@ -50,11 +50,13 @@ export default {
     },
 
     acheterDino: function () {
-      if (this.dinosaure.prix <= this.$store.state._banque) {
+      if (this.dinosaure.prix_courant <= this.$store.state._banque) {
         this.incrementDanger(this.dinosaure.danger)
-        this.decrementBanque(this.dinosaure.prix)
+        this.decrementBanque(this.dinosaure.prix_courant)
         this.incrementViviteurs(this.dinosaure.visiteur)
         this.incrementDinosaures(this.dinosaure.name)
+
+        this.dinosaure.prix_courant += this.dinosaure.prix_original * 0.1
       } else {
         alert('vous êtes trop pauvre')
       }
