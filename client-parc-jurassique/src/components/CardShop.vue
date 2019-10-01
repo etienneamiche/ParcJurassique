@@ -58,7 +58,10 @@ export default {
         this.decrementBanque(this.prixCourant)
         this.incrementMagasins(this.magasin.name)
       } else {
-        alert('vous êtes trop pauvre')
+        this.$store.dispatch('setAlertMoney', true)
+        setTimeout(() => {
+          this.$store.dispatch('setAlertMoney', false)
+        }, 3000)
       }
     }
   }

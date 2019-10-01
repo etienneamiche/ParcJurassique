@@ -16,6 +16,30 @@
 
     <v-content>
 
+    <v-alert :value="alertMoney"
+      border="left"
+      close-text="Close Alert"
+      transition="scale-transition"
+      class="transition-swing"
+      color='warning'
+      icon="mdi-currency-usd"
+      dark
+      dismissible>
+        Vous êtes trop pauvre
+    </v-alert>
+
+    <v-alert :value="alertDanger"
+      border="left"
+      close-text="Close Alert"
+      transition="scale-transition"
+      class="transition-swing"
+      color='error'
+      icon="mdi-skull-outline"
+      dark
+      dismissible>
+        Un dinosaure a mangé un enfant, vous perdez {{visiteurPerte}} visiteurs, renforcez la sécurité !!
+    </v-alert>
+
       <v-container>
         <v-row>
           <!-- Dinosaures -->
@@ -52,6 +76,7 @@ import CardDino from '@/components/CardDino'
 import CardSecu from '@/components/CardSecu'
 import CardShop from '@/components/CardShop'
 import gameData from '@/data/game_data'
+// import alertGenerator from '@/plugins/alertGenerator'
 
 export default {
   name: 'home',
@@ -61,11 +86,13 @@ export default {
     CardShop
   },
   data: () => ({
-    gamedata: gameData
+    gamedata: gameData,
+    visiteurPerte: 0
   }),
 
   mounted () {
     this.earnMoney()
+    this.accidents()
   },
 
   methods: {
@@ -80,6 +107,24 @@ export default {
         // ajout du benefice calculé a la banque
         this.$store.dispatch('incrementBanque', moneyCount * this.$store.state._visiteurs)
       }, 1000)
+    },
+
+    accidents: function () {
+      setInterval(() => {
+        let danger = this.$store.state._danger
+
+        if (danger > Math.floor(Math.random() * 101)) {
+          this.visiteurPerte = this.randomVisiteur()
+          this.$store.dispatch('decrementVisiteurs', this.visiteurPerte)
+          this.$store.dispatch('setAlertDanger', true)
+          setTimeout(() => {
+            this.$store.dispatch('setAlertDanger', false)
+          }, 5000)
+        }
+      }, 10000)
+    },
+    randomVisiteur: function () {
+      return Math.floor(Math.random() * (this.$store.state._visiteurs + 1))
     }
   },
   computed: {
@@ -91,8 +136,26 @@ export default {
     },
     danger: function () {
       return this.$store.state._danger
+    },
+    alertMoney: function () {
+      return this.$store.state._alertMoney
+    },
+    alertDanger: function () {
+      return this.$store.state._alertDanger
     }
   }
+//   watch: {
+//     alertMoney: function () {
+//       setTimeout(() => {
+//         this.$store.dispatch('setAlertMoney', false)
+//       }, 5000)
+//     },
+//     alertDanger: function () {
+//       setTimeout(() => {
+//         this.$store.dispatch('setAlertDanger', false)
+//       }, 5000)
+//     }
+//   }
 }
 </script>
 
