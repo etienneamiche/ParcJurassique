@@ -62,7 +62,10 @@ export default {
         this.incrementViviteurs(this.dinosaure.visiteur)
         this.incrementDinosaures(this.dinosaure.name)
       } else {
-        alert('vous êtes trop pauvre')
+        this.$store.dispatch('setAlertMoney', true)
+        setTimeout(() => {
+          this.$store.dispatch('setAlertMoney', false)
+        }, 3000)
       }
     }
   }

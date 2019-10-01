@@ -5,8 +5,10 @@ Vue.use(Vuex)
 
 const state = {
   _banque: 1000,
-  _visiteurs: 0,
-  _danger: 0,
+  _visiteurs: 1000,
+  _danger: 100,
+  _alertMoney: false,
+  _alertDanger: false,
 
   _effectifPersonnels: {
     'Gardien': 0,
@@ -54,13 +56,21 @@ export default new Vuex.Store({
     // Visiteurs Mutation
 
     incrementDanger (state, n) {
-      state._danger += n
+      if (state._danger + n > 100) {
+        state._danger = 100
+      } else {
+        state._danger += n
+      }
     },
     // incrementDanger (n) {
     //   state._danger += n
     // },
     decrementDanger (state, n) {
-      state._danger -= n
+      if (state._danger - n < 0) {
+        state._danger -= 0
+      } else {
+        state._danger -= n
+      }
     },
 
     // Dinosaures Mutation
@@ -80,6 +90,16 @@ export default new Vuex.Store({
 
     incrementMagasins (state, name) {
       state._effectifMagasins[name] += 1
+    },
+
+    // Alert
+
+    setAlertMoney (state, bool) {
+      state._alertMoney = bool
+    },
+
+    setAlertDanger (state, bool) {
+      state._alertDanger = bool
     }
 
   },
@@ -110,6 +130,12 @@ export default new Vuex.Store({
     },
     incrementMagasins ({ commit }, name) {
       commit('incrementMagasins', name)
+    },
+    setAlertMoney ({ commit }, bool) {
+      commit('setAlertMoney', bool)
+    },
+    setAlertDanger ({ commit }, bool) {
+      commit('setAlertDanger', bool)
     }
   }
 
