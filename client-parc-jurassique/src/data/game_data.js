@@ -1,13 +1,6 @@
 const gameData = {
   'dinosaures': [
     {
-      'name': 'Styracosaure',
-      'decription': '',
-      'prix': 10,
-      'danger': 1,
-      'visiteur': 1,
-      'logo': 'styracosaurus.png'
-    }, {
       'name': 'Brachiosaure',
       'decription': '',
       'prix': 100,
