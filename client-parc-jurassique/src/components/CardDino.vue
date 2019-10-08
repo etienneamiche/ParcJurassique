@@ -1,5 +1,5 @@
 <template>
-  <v-card color elevation="10">
+  <v-card elevation="10">
     <v-img src="@/assets/forest.png" height="120px">
       <v-container>
         <v-row align="center" justify="center">
