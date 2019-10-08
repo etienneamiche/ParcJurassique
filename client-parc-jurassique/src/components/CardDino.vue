@@ -1,29 +1,50 @@
 <template>
-  <v-card class="mx-auto" color="red lighten-4" elevation="10">
-    <v-card-title>{{dinosaure.name}}</v-card-title>
-    <v-card-actions>
-      <v-btn class="mx-2" fab dark large color="red" @click="acheterDino">
-        <v-avatar>
-          <img :src="require(`@/assets/${dinosaure.logo}`)" />
-        </v-avatar>
-      </v-btn>
-      <v-container class="red lighten-3">
-        <v-row no-gutters>
-          <v-col cols="12">
-            <h4>Cout: {{this.prixCourant}}$</h4>
-          </v-col>
-          <v-col cols="12">
-            <h4>Visiteur: +{{dinosaure.visiteur}}</h4>
-          </v-col>
-          <v-col cols="12">
-            <h4>Danger: +{{dinosaure.danger}}</h4>
-          </v-col>
-          <v-col cols="12">
-            <h4>Effectif: {{effectif}}</h4>
-          </v-col>
+  <v-card color elevation="10">
+    <v-img src="@/assets/forest.png" height="120px">
+      <v-container>
+        <v-row align="center" justify="center">
+          <img :src="require(`@/assets/${dinosaure.logo}`)" height="90px" width="90px" align="top" />
         </v-row>
       </v-container>
-    </v-card-actions>
+    </v-img>
+
+    <v-container>
+      <v-row align="center" justify="center">
+        <h2 class="headline">{{dinosaure.name}}</h2>
+      </v-row>
+      <v-row align="center" justify="center">
+        <p>"{{dinosaure.description}}"</p>
+      </v-row>
+    </v-container>
+
+    <v-container>
+      <v-row align="center" justify="center">
+        <v-col cols="6">
+          <v-card outlined>
+            <v-container>
+              <v-row no-gutters align="center" justify="center">
+                <v-col cols="12">
+                  <h4 class="subtitle-1">Cout: {{prixCourant}}$</h4>
+                </v-col>
+                <v-col cols="12">
+                  <h4 class="subtitle-1">Visiteur: +{{dinosaure.visiteur}}</h4>
+                </v-col>
+                <v-col cols="12">
+                  <h4 class="subtitle-1">Danger: +{{dinosaure.danger}}</h4>
+                </v-col>
+                <v-col cols="12">
+                  <h4 class="subtitle-1">Effectif: {{effectif}}</h4>
+                </v-col>
+              </v-row>
+            </v-container>
+          </v-card>
+        </v-col>
+
+        <v-col cols="6">
+          <v-btn class outlined large rounded @click="acheterDino">Acheter</v-btn>
+        </v-col>
+      </v-row>
+    </v-container>
   </v-card>
 </template>
 

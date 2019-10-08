@@ -1,44 +1,18 @@
 <template>
 <v-app dark>
     <v-app-bar app>
+
     <v-container>
-      <v-row>
-
-          <h3>Parc Jurassique</h3>
-
-          <v-avatar><img :src="require('@/assets/money.png')" alt=""></v-avatar><span><h3>{{banque}}</h3></span>
-          <v-avatar><img :src="require('@/assets/family.png')" alt=""></v-avatar><span><h3>{{visiteurs}}</h3></span>
-          <v-avatar><img :src="require('@/assets/danger.png')" alt=""></v-avatar><span><h3>{{danger}}</h3></span>
-
+      <v-row align="center"
+          justify="center">
+          <v-avatar><img :src="require('@/assets/money.png')" alt=""></v-avatar><span><h3 class="headline">{{banque}}</h3></span>
+          <v-avatar><img :src="require('@/assets/family.png')" alt=""></v-avatar><span><h3 class="headline">{{visiteurs}}</h3></span>
+          <v-avatar><img :src="require('@/assets/danger.png')" alt=""></v-avatar><span><h3 :style="couleurDanger" class="headline">{{danger}}%</h3></span>
       </v-row>
     </v-container>
     </v-app-bar>
 
     <v-content>
-
-    <v-alert :value="alertMoney"
-      border="left"
-      close-text="Close Alert"
-      transition="scale-transition"
-      class="transition-swing"
-      color='warning'
-      icon="mdi-currency-usd"
-      dark
-      dismissible>
-        Vous êtes trop pauvre
-    </v-alert>
-
-    <v-alert :value="alertDanger"
-      border="left"
-      close-text="Close Alert"
-      transition="scale-transition"
-      class="transition-swing"
-      color='error'
-      icon="mdi-skull-outline"
-      dark
-      dismissible>
-        Un dinosaure a mangé un enfant, vous perdez {{visiteurPerte}} visiteurs, renforcez la sécurité !!
-    </v-alert>
 
       <v-container>
         <v-row>
@@ -67,6 +41,11 @@
       </v-container>
 
     </v-content>
+    <v-footer fixed color="transparent">
+      <div class="alert">
+        <Alertes :visiteurPerte="visiteurPerte"></Alertes>
+      </div>
+    </v-footer>
   </v-app>
 </template>
 
@@ -75,6 +54,8 @@
 import CardDino from '@/components/CardDino'
 import CardSecu from '@/components/CardSecu'
 import CardShop from '@/components/CardShop'
+import Alertes from '@/components/Alertes'
+
 import gameData from '@/data/game_data'
 // import alertGenerator from '@/plugins/alertGenerator'
 
@@ -83,7 +64,8 @@ export default {
   components: {
     CardDino,
     CardSecu,
-    CardShop
+    CardShop,
+    Alertes
   },
   data: () => ({
     gamedata: gameData,
@@ -105,7 +87,7 @@ export default {
           moneyCount += this.$store.state._effectifMagasins[storeShop] * benef
         }
         // ajout du benefice calculé a la banque
-        this.$store.dispatch('incrementBanque', moneyCount * this.$store.state._visiteurs)
+        this.$store.dispatch('incrementBanque', Math.round((moneyCount * this.$store.state._visiteurs) / 10))
       }, 1000)
     },
 
@@ -113,8 +95,8 @@ export default {
       setInterval(() => {
         let danger = this.$store.state._danger
 
-        if (danger > Math.floor(Math.random() * 101)) {
-          this.visiteurPerte = this.randomVisiteur()
+        if (danger > Math.floor(Math.random() * 101) && this.$store.state._visiteurs !== 0) {
+          this.visiteurPerte = this.getRandomVisiteur()
           this.$store.dispatch('decrementVisiteurs', this.visiteurPerte)
           this.$store.dispatch('setAlertDanger', true)
           setTimeout(() => {
@@ -123,7 +105,7 @@ export default {
         }
       }, 10000)
     },
-    randomVisiteur: function () {
+    getRandomVisiteur: function () {
       return Math.floor(Math.random() * (this.$store.state._visiteurs + 1))
     }
   },
@@ -137,28 +119,23 @@ export default {
     danger: function () {
       return this.$store.state._danger
     },
-    alertMoney: function () {
-      return this.$store.state._alertMoney
-    },
-    alertDanger: function () {
-      return this.$store.state._alertDanger
+    couleurDanger: function () {
+      if (this.danger < 10) {
+        return 'color:green'
+      } else if (this.danger > 30) {
+        return 'color:red'
+      } else return 'color:orange'
     }
+
   }
-//   watch: {
-//     alertMoney: function () {
-//       setTimeout(() => {
-//         this.$store.dispatch('setAlertMoney', false)
-//       }, 5000)
-//     },
-//     alertDanger: function () {
-//       setTimeout(() => {
-//         this.$store.dispatch('setAlertDanger', false)
-//       }, 5000)
-//     }
-//   }
 }
 </script>
 
-<style>
-
+<style scoped>
+.v-avatar{
+  margin: 0 1em
+}
+.alert{
+  width: 100%
+}
 </style>

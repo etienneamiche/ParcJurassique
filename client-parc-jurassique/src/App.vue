@@ -7,3 +7,11 @@
 <script>
 
 </script>
+
+<style>
+#app {
+  background-image: url(assets/background.jpg);
+  background-size: cover;
+}
+
+</style>
