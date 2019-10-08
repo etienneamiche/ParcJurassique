@@ -19,7 +19,6 @@
         </v-row>
     </v-container>
 
-    </v-card-actions>
         <v-container>
       <v-row align="center" justify="center">
         <v-col cols="6">
@@ -36,7 +35,7 @@
                   <h4 class="subtitle-1">Effectif: {{effectif}}</h4>
                 </v-col>
                 <v-col cols="12">
-                    <br>
+                    <h4 class="subtitle-1"><br></h4>
                 </v-col>
               </v-row>
             </v-container>
