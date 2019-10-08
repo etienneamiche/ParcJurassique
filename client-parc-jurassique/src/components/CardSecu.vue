@@ -29,7 +29,7 @@
                   <h4 class="subtitle-1">Cout: {{prixCourant}}$</h4>
                 </v-col>
                 <v-col cols="12">
-                  <h4 class="subtitle-1">Danger: +{{personnel.danger}}</h4>
+                  <h4 class="subtitle-1">Danger: {{personnel.danger}}</h4>
                 </v-col>
                 <v-col cols="12">
                   <h4 class="subtitle-1">Effectif: {{effectif}}</h4>
