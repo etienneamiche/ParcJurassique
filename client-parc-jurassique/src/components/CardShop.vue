@@ -13,7 +13,7 @@
         <h2 class="headline">{{magasin.name}}</h2>
       </v-row>
       <v-row align="center" justify="center">
-        <p>"{{magasin.description}}"</p>
+        <p>{{magasin.description}}</p>
       </v-row>
     </v-container>
 
@@ -31,6 +31,9 @@
                 </v-col>
                 <v-col cols="12">
                   <h4 class="subtitle-1">Effectif: {{effectif}}</h4>
+                </v-col>
+                <v-col cols="12">
+                  <h4 class="subtitle-1"> <br> </h4>
                 </v-col>
                 <v-col cols="12">
                   <h4 class="subtitle-1"> <br> </h4>
