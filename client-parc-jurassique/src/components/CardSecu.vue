@@ -20,6 +20,7 @@
     </v-container>
 
       <v-container>
+
       <v-row align="center" justify="center">
         <v-col cols="6">
           <v-card outlined>
@@ -35,7 +36,9 @@
                   <h4 class="subtitle-1">Effectif: {{effectif}}</h4>
                 </v-col>
                 <v-col cols="12">
+
                     <h4 class="subtitle-1"> <br> </h4>
+
                 </v-col>
               </v-row>
             </v-container>
@@ -43,7 +46,7 @@
         </v-col>
 
         <v-col cols="6">
-          <v-btn class outlined large rounded @click="acheterDino">Acheter</v-btn>
+          <v-btn class outlined large rounded @click="acheterSecu">Acheter</v-btn>
         </v-col>
       </v-row>
     </v-container>
