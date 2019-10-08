@@ -2,7 +2,7 @@ const gameData = {
   'dinosaures': [
     {
       'name': 'Brachiosaure',
-      'decription': '',
+      'decription': 'Le brachiosaure était un gigantesque dinosaure appartenant au groupe des saurischiens sauropodes, probablement des plus grands et des plus lourds qui ait jamais existé.',
       'prix': 100,
       'danger': 2,
       'visiteur': 10,
