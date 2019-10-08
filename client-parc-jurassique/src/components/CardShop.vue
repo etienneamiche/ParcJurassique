@@ -1,30 +1,50 @@
 <template>
-  <v-card
-    class="mx-auto"
-    color="blue lighten-4"
-    elevation="10"
-  >
-    <v-card-title>{{magasin.name}}</v-card-title>
-    <v-card-actions>
-      <v-btn class="mx-2" fab dark large color="blue" @click="acheterMagasin" >
-        <v-avatar>
-            <img :src="require(`@/assets/${magasin.logo}`)">
-        </v-avatar>
-    </v-btn>
-    <v-container class="blue lighten-3">
-    <v-row no-gutters>
-      <v-col cols="12">
-        <h4>Coût : {{prixCourant}}$</h4>
-      </v-col>
-      <v-col cols="12">
-        <h4>Bénéfices: + {{magasin.benefice}}$ par visiteur</h4>
-      </v-col>
-      <v-col cols="12">
-        <h4>Effectif : {{effectif}}</h4>
-      </v-col>
-    </v-row>
-  </v-container>
-    </v-card-actions>
+  <v-card elevation="10">
+    <v-img src="@/assets/shop.png" height="120px">
+    <v-container>
+        <v-row align="center" justify="center">
+          <img :src="require(`@/assets/${magasin.logo}`)" height="90px" width="90px" align="top" />
+        </v-row>
+      </v-container>
+    </v-img>
+
+    <v-container>
+      <v-row align="center" justify="center">
+        <h2 class="headline">{{magasin.name}}</h2>
+      </v-row>
+      <v-row align="center" justify="center">
+        <p>"{{magasin.description}}"</p>
+      </v-row>
+    </v-container>
+
+    <v-container>
+      <v-row align="center" justify="center">
+        <v-col cols="6">
+          <v-card outlined>
+            <v-container>
+              <v-row no-gutters align="center" justify="center">
+                <v-col cols="12">
+                  <h4 class="subtitle-1">Cout: {{prixCourant}}$</h4>
+                </v-col>
+                <v-col cols="12">
+                  <h4 class="subtitle-1">Bénéfices: +{{magasin.benefice}}</h4>
+                </v-col>
+                <v-col cols="12">
+                  <h4 class="subtitle-1">Effectif: {{effectif}}</h4>
+                </v-col>
+                <v-col cols="12">
+                  <h4 class="subtitle-1"> <br> </h4>
+                </v-col>
+              </v-row>
+            </v-container>
+          </v-card>
+        </v-col>
+
+        <v-col cols="6">
+          <v-btn class outlined large rounded @click="acheterMagasin">Acheter</v-btn>
+        </v-col>
+      </v-row>
+    </v-container>
   </v-card>
 </template>
 
