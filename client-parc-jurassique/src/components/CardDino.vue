@@ -13,7 +13,7 @@
         <h2 class="headline">{{dinosaure.name}}</h2>
       </v-row>
       <v-row align="center" justify="center">
-        <p>"{{dinosaure.description}}"</p>
+        <p class="description">{{dinosaure.description}}</p>
       </v-row>
     </v-container>
 
@@ -97,5 +97,8 @@ export default {
 <style scoped>
 .v-card {
   margin-top: 1em;
+}
+.description{
+  text-align:center
 }
 </style>

@@ -15,7 +15,7 @@
             <h2 class="headline">{{personnel.name}} </h2>
         </v-row>
         <v-row align="center" justify="center">
-            <p>"{{personnel.description}}"</p>
+            <p>{{personnel.description}}</p>
         </v-row>
     </v-container>
 
@@ -36,6 +36,9 @@
                 </v-col>
                 <v-col cols="12">
                     <h4 class="subtitle-1"><br></h4>
+                </v-col>
+                <v-col cols="12">
+                  <h4 class="subtitle-1"> <br> </h4>
                 </v-col>
               </v-row>
             </v-container>
