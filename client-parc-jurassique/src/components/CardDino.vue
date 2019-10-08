@@ -43,6 +43,7 @@
         <v-col cols="6">
           <v-btn class outlined large rounded @click="acheterDino">Acheter</v-btn>
         </v-col>
+
       </v-row>
     </v-container>
   </v-card>
