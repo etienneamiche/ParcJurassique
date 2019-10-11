@@ -6,7 +6,7 @@ Vue.use(Vuex)
 const state = {
   _banque: 1000,
   _visiteurs: 1000,
-  _danger: 0,
+  _danger: 100,
   _alertMoney: false,
   _alertDanger: false,
 
