@@ -56,7 +56,7 @@ export default {
   props: ['magasin'],
   computed: {
     effectif: function () {
-      return this.$store.state._effectifMagasins[this.magasin.name]
+      return this.$store.state.data._effectifMagasins[this.magasin.name]
     },
     prixCourant: function () {
       if (this.effectif === 0) {
@@ -77,7 +77,7 @@ export default {
     },
 
     acheterMagasin: function () {
-      if (this.prixCourant <= this.$store.state._banque) {
+      if (this.prixCourant <= this.$store.state.data._banque) {
         this.decrementBanque(this.prixCourant)
         this.incrementMagasins(this.magasin.name)
       } else {

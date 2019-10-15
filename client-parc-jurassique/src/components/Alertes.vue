@@ -34,19 +34,18 @@ export default {
 
   computed: {
     alertMoney: function () {
-      return this.$store.state._alertMoney
+      return this.$store.state.data._alertMoney
     },
     alertDanger: function () {
-      return this.$store.state._alertDanger
+      return this.$store.state.data._alertDanger
     },
     generateTarget: function () {
       let int = Math.floor(Math.random() * 3)
-      console.log(int)
       switch (int) {
         case 1: return 'un enfant'
         case 2: return 'une famille entière'
         case 3: return 'un petit chien trop mignon qui s\'appelait Boss'
-        default: return 'un bouc'
+        default: return 'un visiteur du parc'
       }
     }
   }

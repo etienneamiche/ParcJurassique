@@ -72,30 +72,45 @@ export default {
     visiteurPerte: 0
   }),
 
+  created () {
+    this.$store.dispatch('fetchData')
+  },
+
   mounted () {
     this.earnMoney()
     this.accidents()
+    this.save()
   },
 
   methods: {
+    save: function () {
+      setInterval(() => {
+        this.axios
+          .post(
+            'https://serveur-parc-jurassique.glitch.me/api/save/' + this.$store.state._user,
+            this.$store.state.data
+
+          )
+      }, 10000)
+    },
     earnMoney: function () {
       setInterval(() => {
         let moneyCount = 0
         // calcul du benefice de tout les magasins
-        for (let storeShop in this.$store.state._effectifMagasins) {
+        for (let storeShop in this.$store.state.data._effectifMagasins) {
           let benef = this.gamedata.magasins.find(m => m.name === storeShop).benefice
-          moneyCount += this.$store.state._effectifMagasins[storeShop] * benef
+          moneyCount += this.$store.state.data._effectifMagasins[storeShop] * benef
         }
         // ajout du benefice calculé a la banque
-        this.$store.dispatch('incrementBanque', Math.round((moneyCount * this.$store.state._visiteurs) / 10))
+        this.$store.dispatch('incrementBanque', Math.round((moneyCount * this.$store.state.data._visiteurs) / 10))
       }, 1000)
     },
 
     accidents: function () {
       setInterval(() => {
-        let danger = this.$store.state._danger
+        let danger = this.$store.state.data._danger
 
-        if (danger > Math.floor(Math.random() * 101) && this.$store.state._visiteurs !== 0) {
+        if (danger > Math.floor(Math.random() * 101) && this.$store.state.data._visiteurs !== 0) {
           this.visiteurPerte = this.getRandomVisiteur()
           this.$store.dispatch('decrementVisiteurs', this.visiteurPerte)
           this.$store.dispatch('setAlertDanger', true)
@@ -106,18 +121,18 @@ export default {
       }, 10000)
     },
     getRandomVisiteur: function () {
-      return Math.floor(Math.random() * (this.$store.state._visiteurs + 1))
+      return Math.floor(Math.random() * (this.$store.state.data._visiteurs + 1))
     }
   },
   computed: {
     banque: function () {
-      return this.$store.state._banque
+      return this.$store.state.data._banque
     },
     visiteurs: function () {
-      return this.$store.state._visiteurs
+      return this.$store.state.data._visiteurs
     },
     danger: function () {
-      return this.$store.state._danger
+      return this.$store.state.data._danger
     },
     couleurDanger: function () {
       if (this.danger < 10) {
