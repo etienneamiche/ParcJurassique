@@ -59,7 +59,7 @@ export default {
   props: ['personnel'],
   computed: {
     effectif: function () {
-      return this.$store.state._effectifPersonnels[this.personnel.name]
+      return this.$store.state.data._effectifPersonnels[this.personnel.name]
     },
     prixCourant: function () {
       if (this.effectif === 0) {
@@ -79,7 +79,7 @@ export default {
       this.$store.dispatch('incrementSecurite', this.personnel.name)
     },
     acheterSecu: function () {
-      if (this.prixCourant <= this.$store.state._banque) {
+      if (this.prixCourant <= this.$store.state.data._banque) {
         this.decrementDanger(this.personnel.danger)
         this.decrementBanque(this.prixCourant)
         this.incrementSecurite(this.personnel.name)

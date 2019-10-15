@@ -54,7 +54,7 @@ export default {
   props: ['dinosaure'],
   computed: {
     effectif: function () {
-      return this.$store.state._effectifDinosaures[this.dinosaure.name]
+      return this.$store.state.data._effectifDinosaures[this.dinosaure.name]
     },
     prixCourant: function () {
       if (this.effectif === 0) {
@@ -78,7 +78,7 @@ export default {
     },
 
     acheterDino: function () {
-      if (this.prixCourant <= this.$store.state._banque) {
+      if (this.prixCourant <= this.$store.state.data._banque) {
         this.incrementDanger(this.dinosaure.danger)
         this.decrementBanque(this.prixCourant)
         this.incrementViviteurs(this.dinosaure.visiteur)

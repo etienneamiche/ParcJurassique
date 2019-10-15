@@ -24,8 +24,7 @@
               <v-card-actions>
                 <div class="flex-grow-1"></div>
 
-                  <v-btn color="primary" @click="loginAPI">Login</v-btn>
-
+                <v-btn color="primary" @click="loginAPI">Login</v-btn>
               </v-card-actions>
             </v-card>
           </v-col>
@@ -61,8 +60,7 @@
               <v-card-actions>
                 <div class="flex-grow-1"></div>
 
-                  <v-btn color="primary" @click="createAccount">Create an account</v-btn>
-
+                <v-btn color="primary" @click="createAccount">Create an account</v-btn>
               </v-card-actions>
             </v-card>
           </v-col>
@@ -73,6 +71,32 @@
     <v-overlay :value="overlay">
       <v-progress-circular indeterminate size="64"></v-progress-circular>
     </v-overlay>
+
+    <v-footer fixed color="transparent">
+      <div class="alert">
+        <v-alert
+          :value="alertSignUp"
+          border="left"
+          close-text="Close Alert"
+          transition="scale-transition"
+          class="transition-swing"
+          color="success"
+          dark
+          dismissible
+        >Utilisateur créé avec succès ! vous pouvez maintenant vous connecter</v-alert>
+
+        <v-alert
+          :value="alertLogin"
+          border="left"
+          close-text="Close Alert"
+          transition="scale-transition"
+          class="transition-swing"
+          color="error"
+          dark
+          dismissible
+        >Utilisateur ou mot de passe erroné</v-alert>
+      </div>
+    </v-footer>
   </v-app>
 </template>
 
@@ -87,42 +111,53 @@ export default {
     username: '',
     password: '',
     username2: '',
-    password2: ''
+    password2: '',
+    alertLogin: false,
+    alertSignUp: false
   }),
   methods: {
     loginAPI: function () {
+      var self = this
       this.overlay = !this.overlay
       this.axios
         .post('https://serveur-parc-jurassique.glitch.me/api/login', {
           username: this.username,
           password: this.password
         })
-        .then((res) => {
+        .then(res => {
+          this.$store.state._user = this.username
           this.overlay = !this.overlay
           this.$router.push({ path: 'home' })
-          console.log(res)
         })
         .catch(function (error) {
-          this.$router.push({ path: '/' })
+          self.overlay = !self.overlay
+          self.alertLogin = true
+
           console.log(error)
         })
     },
 
-    createAccount: function () {
+    createAccount: function alertSignUp () {
       this.overlay = !this.overlay
       this.axios
         .post('https://serveur-parc-jurassique.glitch.me/api/signup', {
           username: this.username2,
           password: this.password2
         })
-        .then((res) => {
+        .then(res => {
           this.overlay = !this.overlay
-          console.log(res)
+          this.alertSignUp = true
         })
         .catch(function (error) {
-          this.$router.push({ path: '/' })
           console.log(error)
         })
     }
-  } }
+  }
+}
 </script>
+
+<style scoped>
+.alert{
+  width: 100%;
+}
+</style>
