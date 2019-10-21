@@ -43,9 +43,11 @@
         <v-col cols="6">
           <v-btn class outlined large rounded @click="acheterDino">Acheter</v-btn>
         </v-col>
-
       </v-row>
     </v-container>
+    <v-progress-linear v-model="percentage" height="25" color="#BC2981">
+      <strong>{{ Math.ceil(percentage) }}%</strong>
+    </v-progress-linear>
   </v-card>
 </template>
 
@@ -61,6 +63,11 @@ export default {
         return this.dinosaure.prix
       }
       return this.effectif * this.dinosaure.prix
+    },
+    percentage: function () {
+      let p = (this.$store.state.data._banque / this.prixCourant) * 100
+      if (p > 100) return 100
+      return p
     }
   },
   methods: {
@@ -98,7 +105,7 @@ export default {
 .v-card {
   margin-top: 1em;
 }
-.description{
-  text-align:center
+.description {
+  text-align: center;
 }
 </style>

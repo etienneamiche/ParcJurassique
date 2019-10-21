@@ -1,7 +1,7 @@
 <template>
   <v-card elevation="10">
     <v-img src="@/assets/shop.png" height="120px">
-    <v-container>
+      <v-container>
         <v-row align="center" justify="center">
           <img :src="require(`@/assets/${magasin.logo}`)" height="90px" width="90px" align="top" />
         </v-row>
@@ -33,10 +33,14 @@
                   <h4 class="subtitle-1">Effectif: {{effectif}}</h4>
                 </v-col>
                 <v-col cols="12">
-                  <h4 class="subtitle-1"> <br> </h4>
+                  <h4 class="subtitle-1">
+                    <br />
+                  </h4>
                 </v-col>
                 <v-col cols="12">
-                  <h4 class="subtitle-1"> <br> </h4>
+                  <h4 class="subtitle-1">
+                    <br />
+                  </h4>
                 </v-col>
               </v-row>
             </v-container>
@@ -48,6 +52,9 @@
         </v-col>
       </v-row>
     </v-container>
+    <v-progress-linear v-model="percentage" height="25" color="#4390AC">
+      <strong>{{ Math.ceil(percentage) }}%</strong>
+    </v-progress-linear>
   </v-card>
 </template>
 
@@ -63,6 +70,11 @@ export default {
         return this.magasin.prix
       }
       return this.effectif * this.magasin.prix
+    },
+    percentage: function () {
+      let p = (this.$store.state.data._banque / this.prixCourant) * 100
+      if (p > 100) return 100
+      return p
     }
   },
   methods: {
@@ -91,7 +103,7 @@ export default {
 }
 </script>
 <style scoped>
-.v-card{
-  margin-top:1em
+.v-card {
+  margin-top: 1em;
 }
 </style>

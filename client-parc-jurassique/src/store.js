@@ -75,7 +75,7 @@ export default new Vuex.Store({
     // },
     decrementDanger (state, n) {
       if (state.data._danger - n < 0) {
-        state.data._danger -= 0
+        state.data._danger = 0
       } else {
         state.data._danger -= n
       }

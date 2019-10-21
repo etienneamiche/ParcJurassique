@@ -50,7 +50,7 @@ const gameData = {
     'logo': 'photographer.png'
   }, {
     'name': 'Nurserie',
-    'description': 'En cas de problème',
+    'description': 'Ramenez un oeuf à la maison',
     'prix': 500,
     'benefice': 4,
     'logo': 'eggs.png'
