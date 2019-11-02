@@ -50,7 +50,7 @@
 
                   <v-text-field
                     id="password2"
-                    label="Password2"
+                    label="Password"
                     name="password2"
                     v-model="password2"
                     type="password"
@@ -120,7 +120,7 @@ export default {
       var self = this
       this.overlay = !this.overlay
       this.axios
-        .post('https://serveur-parc-jurassique.glitch.me/api/login', {
+        .post('/api/login', {
           username: this.username,
           password: this.password
         })
@@ -140,7 +140,7 @@ export default {
     createAccount: function alertSignUp () {
       this.overlay = !this.overlay
       this.axios
-        .post('https://serveur-parc-jurassique.glitch.me/api/signup', {
+        .post('/api/signup', {
           username: this.username2,
           password: this.password2
         })

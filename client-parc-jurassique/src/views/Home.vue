@@ -87,7 +87,7 @@ export default {
       setInterval(() => {
         this.axios
           .post(
-            'https://serveur-parc-jurassique.glitch.me/api/save/' + this.$store.state._user,
+            '/api/save/' + this.$store.state._user,
             this.$store.state.data
 
           )
