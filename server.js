@@ -18,7 +18,7 @@ app.use(session({
   secret: process.env.SECRET, // changez cette valeur
   resave: false,
   saveUninitialized: true,
-  cookie: { secure: false } // ne changez que si vous avez activé le https
+  cookie: { secure: true } // ne changez que si vous avez activé le https
 }))
 app.use(morgan('dev'))
 app.use(bodyParser.json())
@@ -27,38 +27,7 @@ app.use(cors())
 const path = require('path')
 app.use(express.static(path.join(__dirname, 'dist/')))
 
-const users = [{
-  username: 'admin',
-  password: 'pass',
-  state: {
-    _banque: 0,
-    _visiteurs: 0,
-    _danger: 0,
-    _alertMoney: false,
-    _alertDanger: false,
-
-    _effectifPersonnels: {
-      'Gardien': 0,
-      'Veterinaire': 0,
-      'Soldat': 0,
-      'Hélicoptère': 0
-    },
-    _effectifMagasins: {
-      'Boutique de souvenirs': 0,
-      'Restaurant': 0,
-      'Photographe': 0,
-      'Nurserie': 0
-    },
-    _effectifDinosaures: {
-      'total': 0,
-      'Styracosaure': 0,
-      'Brachiosaure': 0,
-      'Pterosaure': 0,
-      'Velociraptor': 0,
-      'Tyranosaure': 0
-    }
-  }
-}]
+const users = []
 
 app.get('/api/state/:name', function (req, res) {
   const user = users.find(u => u.username === req.params.name)
@@ -126,7 +95,7 @@ app.post('/api/signup', (req, res) => {
       }
 
     )
-    req.session.userId = uid() // connect the user, and change the id
+    req.session.userId = uid // connect the user, and change the id
     res.json({
       message: 'signed up'
     })
@@ -145,7 +114,7 @@ app.post('/api/login', (req, res) => {
       })
     } else {
       // connect the user
-      req.session.userId = uid() // connect the user, and change the id
+      req.session.userId = uid // connect the user, and change the id
       res.json({
         message: 'connected'
       })
