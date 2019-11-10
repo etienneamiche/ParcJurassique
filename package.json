@@ -16,7 +16,10 @@
     "vue-axios": "^2.1.5",
     "vue-router": "^3.0.3",
     "vuetify": "^2.1.9",
-    "vuex": "^3.0.1"
+    "vuex": "^3.0.1",
+    "morgan": "^1.9.1",
+    "cors": "^2.8.5",
+    "express-session": "^1.16.1"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.12.1",
