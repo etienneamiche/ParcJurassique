@@ -115,7 +115,7 @@ export default new Vuex.Store({
 
     fetchData ({ commit }) {
       axios
-        .get('https://serveur-parc-jurassique.glitch.me/api/state/' + this.state._user)
+        .get('/api/state/' + this.state._user)
         .then(res => {
           console.log(res)
           commit('fetchData', res.data)

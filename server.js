@@ -10,7 +10,7 @@ const bodyParser = require('body-parser')
 const morgan = require('morgan')
 const cors = require('cors')
 const session = require('express-session')
-const uid = require('uid')
+const uid = 1000
 
 const app = express()
 
